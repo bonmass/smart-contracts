@@ -4,12 +4,12 @@ import { CONTRACT_ADDRESS } from "./scripts/utils";
 
 
 task("dbEvent", "Prints the list of accounts")
-  .addParam('userId', "The ID of the user in the database")
+  .addParam('params', "The parameters used in the GET request")
   .addParam('dataHash', "hash of the database record")
   .addParam('label', "API path or label of the record")
   .setAction(async (taskArgs, hre) => {
   const bonMass = await hre.ethers.getContractAt('BonMass', CONTRACT_ADDRESS);
-  const tx = await bonMass.emitDbEvent(taskArgs.userId, taskArgs.dataHash, taskArgs.label);
+  const tx = await bonMass.emitDbEvent(taskArgs.label, taskArgs.dataHash, taskArgs.params);
 
   console.log('DbEvent was emitted with txId', tx.hash);
 });

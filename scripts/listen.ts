@@ -6,10 +6,10 @@ export default async function listen() {
     const myContract = myContractFactory.attach(CONTRACT_ADDRESS)
 
     console.log(`Listening to events from contract: ${CONTRACT_ADDRESS}`)
-    myContract.on("DbEvent", (userId, dataHash, label, ts) => {
+    myContract.on("DbEvent", (label, dataHash, params, ts) => {
         const date = new Date(Number(ts)*1000)
         const dateString = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
-        console.log(`DbEvent: \n\tUserId: ${userId}\n\tlabel: ${label};\n\tdataHash: ${dataHash};\n\tat time: ${dateString}`)
+        console.log(`DbEvent: \n\tlabel: ${label} \n\tparams ${params} \n\tdataHash: ${dataHash};\n\tat time: ${dateString}`)
     })
 }
 

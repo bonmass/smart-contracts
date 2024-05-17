@@ -2,7 +2,7 @@
 pragma solidity ^0.8.19;
 
 contract BonMass {
-    event DbEvent(uint64 indexed userId, bytes32 indexed dataHash, string label, uint64 ts);
+    event DbEvent(string indexed label, bytes32 indexed dataHash, string params, uint64 ts);
     address private admin;
 
     constructor() {
@@ -14,10 +14,10 @@ contract BonMass {
         _;
     }
 
-    function emitDbEvent(uint64 userId, bytes32 dataHash, string calldata label)
+    function emitDbEvent(string calldata label, bytes32 dataHash, string calldata params)
         external
         onlyAdmin
     {
-        emit DbEvent(userId, dataHash, label, uint64(block.timestamp));
+        emit DbEvent(label, dataHash, params, uint64(block.timestamp));
     }
 }

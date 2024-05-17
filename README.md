@@ -17,5 +17,5 @@ npm run fdp-play:stop
 npm run fdp-play:deploy
 # EVENTS
 npm run db-event:listen
-npx hardhat dbEvent --user-id 1 --data-hash 0xb0baf37700000000000000000000000000000000000000000000000000000000 --label "bloodPressure" --network fdpPlay
+npx hardhat dbEvent --label "bloodPressure" --params "userId=1&sex=female" --data-hash 0xb0baf37700000000000000000000000000000000000000000000000000000000  --network fdpPlay
 ```
